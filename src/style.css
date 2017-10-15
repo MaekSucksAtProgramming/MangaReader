@@ -1,0 +1,12 @@
+@import 'font-awesome/css/font-awesome';
+
+/* Removes outer padding from the application */
+html, body {
+    margin: 0; 
+}
+
+.topbar {
+    width: 100%;
+    background-color: pink;
+    height: 50px;
+}
