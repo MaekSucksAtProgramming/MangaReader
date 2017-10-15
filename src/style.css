@@ -1,6 +1,8 @@
 /* Removes outer padding from the application */
-html, body {
-    margin: 0; 
+
+html,
+body {
+    margin: 0;
 }
 
 .btn-open {
@@ -10,9 +12,8 @@ html, body {
 
 .topbar {
     width: 100%;
-    background-color: #313131;
+    background-color: #666;
     height: 50px;
-
     display: flex;
     align-items: center;
 }
