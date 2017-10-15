@@ -5,8 +5,16 @@ html, body {
     margin: 0; 
 }
 
+.btn-open {
+    color: #fff;
+    padding: 10px;
+}
+
 .topbar {
     width: 100%;
-    background-color: pink;
+    background-color: #313131;
     height: 50px;
+
+    display: flex;
+    align-items: center;
 }
