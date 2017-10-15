@@ -1,8 +1,21 @@
 /* Removes outer padding from the application */
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,700');
 
-html,
-body {
+
+html,body {
     margin: 0;
+    font-family: roboto;
+    font-weight: 400;
+
+    background-color: rgb(253, 253, 253);
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 50px 1fr;
+    grid-template-areas: "topbar"
+                        "content";
 }
 
 .btn-open {
@@ -11,9 +24,28 @@ body {
 }
 
 .topbar {
+    grid-area: topbar;
+
     width: 100%;
-    background-color: #666;
+    background-color: #313131;
     height: 50px;
     display: flex;
     align-items: center;
+}
+
+.content {
+    grid-area: content;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    margin: 1em;
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.10);
+    padding: 1em;
 }
