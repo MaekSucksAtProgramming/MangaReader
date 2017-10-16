@@ -2,30 +2,39 @@
 <html>
 
 <head>
-  <meta charset="UTF-8">
-  <title>Manga Reader</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.min.css">
+    <meta charset="UTF-8">
+    <title>Manga Reader</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.min.css">
 </head>
 
 <body>
-  <div class="container">
-    <div class="topbar">
-      <div class="btn-open">
-        <i class="fa fa-bars" aria-hidden="true"></i>
-      </div>
-    </div>
-    <div class="content">
-      <div class="card">
-        Manga Reader
-      </div>
-    </div>
-  </div>
-  <!-- All of the Node.js APIs are available in this renderer process. -->
-  <script>
-    // You can also require other files to run in this process, Dread likes Apes, Maek likes Furries
-    require('./renderer.js')
-  </script>
+    <div class="container">
+        <div class="topbar">
+            <div class="btn-open">
+                <i class="fa fa-bars" aria-hidden="true"></i>
+            </div>
+            <div class="btn-plus">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+            </div>
+        </div>
+           <!--<div class="btn-left">
+                <i class="fa fa-arrow-left" aria-hidden="true"></i>          
+            </div>
+            <div class="btn-right">
+                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+            </div>-->
+            <div class="img-container">
+                    <img src="imgcenter/futaba.png">
+            </div>
+        </div>
+        
+
+    <!-- All of the Node.js APIs are available in this renderer process. -->
+    <script>
+        // You can also require other files to run in this process, Dread likes Apes, Maek likes Furries
+        require('./renderer.js')
+    </script>
 </body>
 
 </html>
