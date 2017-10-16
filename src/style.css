@@ -75,6 +75,8 @@ body {
     justify-content: center;
     height: 100%;
     width: 50%;
+
+    /* background-image: url('./assets/images/3.png'); */
 }
 
 .card {
