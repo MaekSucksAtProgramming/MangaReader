@@ -39,6 +39,10 @@ body {
     padding: 1em;
     width: 2em;
 
+    /* A CSS property that controls how fast
+    it changes from 1 set of styling to the next
+    used in our case by :hover, increase to make slower
+    decrease to make it change faster */
     transition: 0.3s;
 }
 
