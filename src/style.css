@@ -30,28 +30,29 @@ body {
     position: absolute;
 }
 
-.btn-left {
+.btn {
     background-color: rgb(221, 221, 221);
     height: 100%;
     position: fixed;
-    left: 0px;
-
     display: flex;
     align-items: center;
     padding: 1em;
     width: 2em;
+
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background-color: rgb(59, 59, 59);
+    color: #fff;
+}
+
+.btn-left {
+    left: 0px;
 }
 
 .btn-right {
-    background-color: rgb(221, 221, 221);
-    height: 100%;
-    position: fixed;
     right: 0px;
-
-    display: flex;
-    align-items: center;
-    padding: 1em;
-    width: 2em;
 }
 
 .topbar {
