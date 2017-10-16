@@ -31,6 +31,19 @@ body {
     
 }
 
+.btn-left {
+    background-color: rgb(221, 221, 221);
+    height: 100%;
+    width: 50px;
+    left: 0px;
+}
+
+.btn-right {
+    background-color: rgb(221, 221, 221);
+    height: 100%;
+    width: 50px;
+}
+
 .topbar {
     grid-area: topbar;
     width: 100%;
