@@ -5,3 +5,4 @@ function previousImage() {
 function nextImage() {
     console.log("selecting next image");
 }
+

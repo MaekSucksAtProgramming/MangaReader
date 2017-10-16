@@ -44,13 +44,24 @@
             './assets/images/5.jpg'
         ]
 
-        function previousImage() {
+        const image = document.getElementsByClassName('img-container')[0].children[0];
 
+        let imageIndex = 0;
+
+        function previousImage() {
+           if(imageIndex > 0) {
+           imageIndex = imageIndex - 1;
+           image.src = imagesArray[imageIndex];
+           }
         }
 
         function nextImage() {
-
+            if(imageIndex < 4) {
+            imageIndex = imageIndex + 1;
+            image.src = imagesArray[imageIndex];
+            } 
         }
+
     </script>
 </body>
 
