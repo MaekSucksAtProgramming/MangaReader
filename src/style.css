@@ -16,6 +16,7 @@ body {
     grid-template-areas: "topbar" 
                          "content";
                          
+    height: 100vh;
 }
 
 .btn-open {
@@ -70,13 +71,12 @@ body {
 
 .img-container {
     margin: auto;
+
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100%;
-    width: 50%;
-
-    /* background-image: url('./assets/images/3.png'); */
+    width: 100%;
 }
 
 .card {
