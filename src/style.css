@@ -31,6 +31,10 @@ body {
     position: absolute;
 }
 
+.btn-plus:hover {
+    color: orange;
+}
+
 .btn {
     background-color: rgb(221, 221, 221);
     height: 100%;
@@ -39,6 +43,8 @@ body {
     align-items: center;
     padding: 1em;
     width: 2em;
+    
+    
 
     /* A CSS property that controls how fast
     it changes from 1 set of styling to the next
@@ -67,11 +73,11 @@ body {
     height: 50px;
     display: flex;
     align-items: center;
+    position: relative;
 }
 
 .img-container {
     margin: auto;
-
     display: flex;
     align-items: center;
     justify-content: center;

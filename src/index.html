@@ -26,10 +26,9 @@
             <div class="btn btn-right" onclick="nextImage()">
                 <i class="fa fa-arrow-right" aria-hidden="true"></i>
             </div>
-            <div class="img-container" id="image">
-                <img src="./assets/images/3.png">
+            <div class="img-container" id="image">               
+                <img src="./assets/images/3.png">                    
             </div>
-
         </div>
     </div>
 
@@ -45,8 +44,10 @@
         ]
 
         const image = document.getElementsByClassName('img-container')[0].children[0];
+        
 
         let imageIndex = 0;
+ 
 
         function previousImage() {
            if(imageIndex > 0) {
@@ -56,12 +57,21 @@
         }
 
         function nextImage() {
-            if(imageIndex < 4) {
+            if(imageIndex < (imagesArray.length - 1)) {
             imageIndex = imageIndex + 1;
             image.src = imagesArray[imageIndex];
             } 
         }
 
+        document.onkeydown = function(e) {
+        e = e || window.event;
+        if (e.keyCode == '37') {
+            previousImage() //left <- show Prev image
+        } else if (e.keyCode == '39') {
+            // right -> show next image
+            nextImage ()
+        }
+    }  
     </script>
 </body>
 
