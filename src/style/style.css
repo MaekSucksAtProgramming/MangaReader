@@ -14,14 +14,14 @@ body {
 /* Contains the entire page */
 
 .container {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 50px 1fr;
-    grid-template-areas: "topbar" "content";
+    display: flex;
+    flex-direction: column;
     height: 100vh;
 }
 
 .topbar {
+    position: sticky;
+    top: 0;
     grid-area: topbar;
     width: 100%;
     background-color: #353535;
