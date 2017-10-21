@@ -4,30 +4,36 @@
 html,
 body {
     margin: 0;
+    padding: 0;
     font-family: roboto;
     font-weight: 400;
     background-color: rgb(253, 253, 253);
 }
 
-img {
-    user-select: none;
-}
+
+/* Contains the entire page */
 
 .container {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 50px 1fr;
-    grid-template-areas: "topbar" 
-                         "content";
-                         
+    grid-template-areas: "topbar" "content";
     height: 100vh;
+}
+
+.topbar {
+    grid-area: topbar;
+    width: 100%;
+    background-color: #353535;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .topbar__button {
     color: #fff;
     background-color: #000;
     padding: 1em;
-
     transition: 0.3s;
 }
 
@@ -37,15 +43,41 @@ img {
     transition: 0.3s;
 }
 
+
+/* Contains everything below the topbar */
+
+.manga-container {
+    display: flex;
+    flex: 1 1 calc(100% - 2em);
+    justify-content: space-between;
+}
+
+#image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.manga-container img {
+    /* TODO: Constrain the image to a certain size for consistency */
+    margin: 1em;
+    user-select: none;
+
+
+}
+
 .btn {
+    /* Sets the background colour of the div */
     background-color: rgb(221, 221, 221);
-    height: 100%;
-    position: fixed;
+
+    /* Flex attributes: https://flexbox.io/ */
     display: flex;
     align-items: center;
+    justify-content: center;
+
+    /* Inside content padding, remember box modol */
     padding: 1em;
-    /* width: 1em; */
-    
+
     /* A CSS property that controls how fast
     it changes from 1 set of styling to the next
     used in our case by :hover, increase to make slower
@@ -56,35 +88,6 @@ img {
 .btn:hover {
     background-color: rgb(59, 59, 59);
     color: #fff;
-}
-
-.btn-left {
-    left: 0px;
-}
-
-.btn-right {
-    right: 0px;
-}
-
-.topbar {
-    grid-area: topbar;
-    width: 100%;
-    background-color: #353535;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    position: relative;
-
-    justify-content: space-between;
-}
-
-.img-container {
-    margin: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    width: 100%;
 }
 
 .card {

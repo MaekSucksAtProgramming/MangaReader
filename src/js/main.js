@@ -75,6 +75,7 @@ ipc.on('open-file-dialog', function (event) {
   dialog.showOpenDialog({
     properties: ['openFile', 'multiSelections', 'showHiddenFiles']
   }, function (files) {
+    console.log('test');
     fs.readFile(files[0], 'utf-8', (error, data) => {
       if (error) console.log('Error: ', error);
       return;
@@ -84,11 +85,12 @@ ipc.on('open-file-dialog', function (event) {
        * (similar to the images array)
        */
       console.log(data);
+      console.log(files);
 
       /**
        * If a selection has been made (not null) forward to the function in renderer
        */
-      if (data) event.sender.send('selected-directory', files);
+      if (data) event.sender.send('selected-directory', data);
     });
 
   })

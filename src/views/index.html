@@ -6,7 +6,6 @@
     <title>Manga Reader</title>
     <link rel="stylesheet" href="../style/style.css">
     <link rel="stylesheet" href="../../node_modules/font-awesome/css/font-awesome.min.css">
-    <!-- <script src="./script.js"></script> -->
 </head>
 
 <body>
@@ -24,22 +23,19 @@
             <div class="btn btn-left" id="btn-left">
                 <i class="fa fa-arrow-left" aria-hidden="true"></i>
             </div>
+            <div id="image">
+                <img src="../assets/images/1.png" id="image-viewer">
+            </div>
             <div class="btn btn-right" id="btn-right">
                 <i class="fa fa-arrow-right" aria-hidden="true"></i>
-            </div>
-            <div class="img-container" id="image">
-                <img src="../assets/images/1.png" id="image-viewer">
             </div>
         </div>
     </div>
 
-
     <!-- All of the Node.js APIs are available in this renderer process. -->
     <script>
         require('../js/renderer.js');
-        require('../js/script.js');
     </script>
-    <!-- <script src="./script.js"></script> -->
 </body>
 
 </html>
