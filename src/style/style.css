@@ -69,6 +69,7 @@ body {
 .btn {
     /* Sets the background colour of the div */
     background-color: rgb(221, 221, 221);
+    opacity: 0.25;
 
     /* Flex attributes: https://flexbox.io/ */
     display: flex;
@@ -88,6 +89,7 @@ body {
 .btn:hover {
     background-color: rgb(59, 59, 59);
     color: #fff;
+    opacity: 1;
 }
 
 .card {

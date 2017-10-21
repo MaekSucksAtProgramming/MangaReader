@@ -16,21 +16,22 @@ selectDirBtn.addEventListener('click', function (event) {
  * This line holds the folder selected
  */
 ipc.on('selected-directory', function (event, files) {
-    console.log('renderer clg');
-    console.log(files);
+    // TODO: Use the files paramter here to change the source images of the image array
+    // imagesArray =  files;
 });
 
 
 
 /////////////////////////////////////////////
 
-let imagesArray = [
-    '../assets/images/1.png',
-    '../assets/images/2.png',
-    '../assets/images/3.png',
-    '../assets/images/4.jpg',
-    '../assets/images/5.jpg'
-]
+// let imagesArray = [
+//     '../assets/images/1.png',
+//     '../assets/images/2.png',
+//     '../assets/images/3.png',
+//     '../assets/images/4.jpg',
+//     '../assets/images/5.jpg'
+// ]
+let imagesArray = []
 
 const image = document.getElementById('image-viewer');
 const btn_left = document.getElementById('btn-left');

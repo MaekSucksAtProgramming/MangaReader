@@ -73,25 +73,21 @@ const fs = require('fs');
  */
 ipc.on('open-file-dialog', function (event) {
   dialog.showOpenDialog({
-    properties: ['openFile', 'multiSelections', 'showHiddenFiles']
+    properties: ['openFile','showHiddenFiles']
   }, function (files) {
-    console.log('test');
-    fs.readFile(files[0], 'utf-8', (error, data) => {
-      if (error) console.log('Error: ', error);
-      return;
+    // console.log(files);
+    // fs.readFile(files[0], 'utf-8', (error, data) => {
+    //   /**
+    //    * Checks to see if an error has occured, if so: reports it in console.
+    //    * @error: error or null, the if statement checks if(error) has a value, so not null
+    //    * If it has no value, its null, and turns to false, so the code behind it doesn't get run.
+    //    */
+    //   if (error) console.log('Error: ', error);
 
-      /**
-       * If a selection has been made, this data variable contains an array pf image links
-       * (similar to the images array)
-       */
-      console.log(data);
-      console.log(files);
-
-      /**
-       * If a selection has been made (not null) forward to the function in renderer
-       */
-      if (data) event.sender.send('selected-directory', data);
-    });
-
+    //   /**
+    //    * If a selection has been made (not null) forward to the function in renderer
+    //    */
+    //   if (data) event.sender.send('selected-directory', data);
+    // });
   })
 })
