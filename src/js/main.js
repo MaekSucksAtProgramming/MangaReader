@@ -17,9 +17,8 @@ let mainWindow
 function createWindow() {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
-    frame: false,
+    width: 1920,
+    height: 1080,
     icon: '../assets/images/icon.ico'
   })
 
@@ -79,13 +78,17 @@ ipc.on('open-file-dialog', function (event) {
   dialog.showOpenDialog({
     properties: ['openDirectory']
   }, function (directory) {
-    var images = [];
-    fs.readdir(directory[0], (err, files) => {
-      files.forEach(file => {
-        const imagePath = path.join(directory[0], file);
-        images.push(imagePath);
-      });
-      if (images) event.sender.send('opened-directory', images);
-    })
+    try {
+      var images = [];
+      fs.readdir(directory[0], (err, files) => {
+        files.forEach(file => {
+          const imagePath = path.join(directory[0], file);
+          images.push(imagePath);
+        });
+        if (images) event.sender.send('opened-directory', images);
+      })
+    } catch (error) {
+      console.log(error);
+    }
   })
 })

@@ -3,23 +3,15 @@
 // All of the Node.js APIs are available in this process.
 const fs = require('fs');
 const ipc = require('electron').ipcRenderer
-const btn_openFiles = document.getElementById('openfiles');
 const naturalSort = require('./utils.js');
 
-btn_openFiles.addEventListener('click', function (event) {
-    ipc.send('open-file-dialog')
-})
+
 
 /**
  * This line holds the folder selected
  */
 ipc.on('opened-directory', (event, images) => {
     image.classList.remove('placeholder'); // Keep this
-
-    // TODO: Dread, add code here.
-    // When you click the lewd anime girl, you can select a folder
-    // after selecting a folder the images will arrive here in the images variable
-    // images = string[], a collection of image paths
     imagesArray = images;
     imagesArray.sort(naturalSort);
     console.log(imagesArray);
@@ -29,11 +21,12 @@ ipc.on('opened-directory', (event, images) => {
 
 /////////////////////////////////////////////
 
-/**
- * Replace below imagesArray[] with an empty array once we got image loading going
- */
+/* Declerations */
 let imagesArray = [];
-
+var isSidebarShown = false;
+var zoomRatio = 1.0;
+var imageIndex = 0;
+const btn_openFiles = document.getElementById('openfiles');
 const image = document.getElementById('image-viewer');
 const btn_left = document.getElementById('btn-left');
 const btn_right = document.getElementById('btn-right');
@@ -47,6 +40,11 @@ if (imagesArray.length === 0) {
     image.src = '../assets/images/placeholder.png';
     image.classList.add('placeholder');
 }
+//region
+/* Event listeners*/
+btn_openFiles.addEventListener('click', (event) => {
+    ipc.send('open-file-dialog')
+})
 
 btn_zoomIn.addEventListener('click', (event) => {
     zoomIn();
@@ -61,6 +59,7 @@ btn_left.addEventListener('click', (event) => {
 btn_right.addEventListener('click', (event) => {
     nextImage();
 });
+
 image.addEventListener('click', (event) => {
     if (imagesArray.length > 0) {
         nextImage();
@@ -68,7 +67,7 @@ image.addEventListener('click', (event) => {
         ipc.send('open-file-dialog');
     }
 });
-var isSidebarShown = false;
+
 btn_sidebar.addEventListener('click', (event) => {
     /**
      * If shown, hide
@@ -88,11 +87,6 @@ btn_sidebar.addEventListener('click', (event) => {
     }
 });
 
-/**
- * Adds an event listener to the program that'll keep track of scroll
- * If people scroll up, deltaY = -100, down deltaT = 100
- * So we check the value and act accordingly
- */
 image.addEventListener('wheel', (event) => {
     event.preventDefault();
     if (event.deltaY < 0 && !event.shiftKey) {
@@ -102,10 +96,6 @@ image.addEventListener('wheel', (event) => {
     }
 });
 
-/**
- * The event.shiftkey is a boolean, a true or false.
- * the code inside will only be accepted if the browser detects that shift is held.
- */
 window.addEventListener('wheel', (event) => {
     if (event.shiftKey && event.deltaY < 0) {
         zoomIn();
@@ -113,9 +103,20 @@ window.addEventListener('wheel', (event) => {
         zoomOut();
     }
 });
-var zoomRatio = 1.0;
 
+document.onkeydown = function (e) {
+    e = e || window.event;
+    if (e.keyCode == '37') {
+        //left <- show Prev image
+        previousImage()
+    } else if (e.keyCode == '39') {
+        // right -> show next image
+        nextImage()
+    }
+}
+//endregion
 
+// Functions
 function zoomIn() {
     if (zoomRatio <= 1.8)
         zoomRatio = zoomRatio + 0.2;
@@ -128,13 +129,6 @@ function zoomOut() {
         image.style.transform = `scale(${zoomRatio})`;
     }
 }
-
-
-/**
- * Has to a var to allow access beyond blockscope
- */
-var imageIndex = 0;
-
 
 function previousImage() {
     if (imageIndex > 0) {
@@ -150,13 +144,3 @@ function nextImage() {
     }
 }
 
-document.onkeydown = function (e) {
-    e = e || window.event;
-    if (e.keyCode == '37') {
-        //left <- show Prev image
-        previousImage()
-    } else if (e.keyCode == '39') {
-        // right -> show next image
-        nextImage()
-    }
-}
