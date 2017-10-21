@@ -12,9 +12,12 @@ require('electron-reload')(__dirname);
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
 
-function createWindow () {
+function createWindow() {
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 800, height: 600})
+  mainWindow = new BrowserWindow({
+    width: 800,
+    height: 600
+  })
 
   // and load the index.html of the app.
   mainWindow.loadURL(url.format({
@@ -59,3 +62,34 @@ app.on('activate', function () {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+const ipc = require('electron').ipcMain
+const dialog = require('electron').dialog
+const fs = require('fs');
+
+/**
+ * A Function that's executed on the prompting of the open-file-dialog event
+ * It creates a new dialog that is able to one or more files or a directory of files
+ * It then takes this information and sends it to the 'selected-directory' method in renderer.js
+ */
+ipc.on('open-file-dialog', function (event) {
+  dialog.showOpenDialog({
+    properties: ['openFile', 'multiSelections', 'showHiddenFiles']
+  }, function (files) {
+    fs.readFile(files[0], 'utf-8', (error, data) => {
+      if (error) console.log('Error: ', error);
+      return;
+
+      /**
+       * If a selection has been made, this data variable contains an array pf image links
+       * (similar to the images array)
+       */
+      // console.log(data);
+
+      /**
+       * If a selection has been made (not null) forward to the function in renderer
+       */
+      if (data) event.sender.send('selected-directory', files);
+    });
+
+  })
+})

@@ -6,28 +6,29 @@
     <title>Manga Reader</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.min.css">
+    <!-- <script src="./script.js"></script> -->
 </head>
 
 <body>
     <div class="container">
         <div class="topbar">
-            <div class="btn-open">
+            <div class="topbar__button">
                 <i class="fa fa-bars" aria-hidden="true"></i>
             </div>
-            <div class="btn-plus">
+            <div class="topbar__button" id="openfiles">
                 <i class="fa fa-plus" aria-hidden="true"></i>
             </div>
         </div>
 
         <div class="manga-container">
-            <div class="btn btn-left" onclick="previousImage()">
+            <div class="btn btn-left" id="btn-left">
                 <i class="fa fa-arrow-left" aria-hidden="true"></i>
             </div>
-            <div class="btn btn-right" onclick="nextImage()">
+            <div class="btn btn-right" id="btn-right">
                 <i class="fa fa-arrow-right" aria-hidden="true"></i>
             </div>
-            <div class="img-container" id="image">               
-                <img src="./assets/images/3.png">                    
+            <div class="img-container" id="image">
+                <img src="./assets/images/3.png" id="image-viewer">
             </div>
         </div>
     </div>
@@ -35,44 +36,10 @@
 
     <!-- All of the Node.js APIs are available in this renderer process. -->
     <script>
-        let imagesArray = [
-            './assets/images/1.png',
-            './assets/images/2.png',
-            './assets/images/3.png',
-            './assets/images/4.jpg',
-            './assets/images/5.jpg'
-        ]
-
-        const image = document.getElementsByClassName('img-container')[0].children[0];
-        
-
-        let imageIndex = 0;
- 
-
-        function previousImage() {
-           if(imageIndex > 0) {
-           imageIndex = imageIndex - 1;
-           image.src = imagesArray[imageIndex];
-           }
-        }
-
-        function nextImage() {
-            if(imageIndex < (imagesArray.length - 1)) {
-            imageIndex = imageIndex + 1;
-            image.src = imagesArray[imageIndex];
-            } 
-        }
-
-        document.onkeydown = function(e) {
-        e = e || window.event;
-        if (e.keyCode == '37') {
-            previousImage() //left <- show Prev image
-        } else if (e.keyCode == '39') {
-            // right -> show next image
-            nextImage ()
-        }
-    }  
+        require('./renderer.js');
+        require('./script.js');
     </script>
+    <!-- <script src="./script.js"></script> -->
 </body>
 
 </html>

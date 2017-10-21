@@ -9,6 +9,10 @@ body {
     background-color: rgb(253, 253, 253);
 }
 
+img {
+    user-select: none;
+}
+
 .container {
     display: grid;
     grid-template-columns: 1fr;
@@ -19,20 +23,18 @@ body {
     height: 100vh;
 }
 
-.btn-open {
+.topbar__button {
     color: #fff;
-    padding: 10px;
+    background-color: #000;
+    padding: 1em;
+
+    transition: 0.3s;
 }
 
-.btn-plus {
-    color: #fff;
-    padding: 10px;
-    right: 0px;
-    position: absolute;
-}
-
-.btn-plus:hover {
-    color: orange;
+.topbar__button:hover {
+    background-color: #fff;
+    color: #000;
+    transition: 0.3s;
 }
 
 .btn {
@@ -42,10 +44,8 @@ body {
     display: flex;
     align-items: center;
     padding: 1em;
-    width: 2em;
+    /* width: 1em; */
     
-    
-
     /* A CSS property that controls how fast
     it changes from 1 set of styling to the next
     used in our case by :hover, increase to make slower
@@ -69,11 +69,13 @@ body {
 .topbar {
     grid-area: topbar;
     width: 100%;
-    background-color: #313131;
+    background-color: #353535;
     height: 50px;
     display: flex;
     align-items: center;
     position: relative;
+
+    justify-content: space-between;
 }
 
 .img-container {
