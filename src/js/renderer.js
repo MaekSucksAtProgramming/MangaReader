@@ -42,6 +42,8 @@ let imagesArray = [
 const image = document.getElementById('image-viewer');
 const btn_left = document.getElementById('btn-left');
 const btn_right = document.getElementById('btn-right');
+const btn_sidebar = document.getElementById('btn-sidebar-toggle');
+const sidebar = document.getElementById('sidebar');
 
 btn_left.addEventListener('click', (event) => {
     previousImage();
@@ -54,6 +56,25 @@ image.addEventListener('click', (event) => {
         nextImage();
     } else {
         ipc.send('open-file-dialog');
+    }
+});
+var isSidebarShown = false;
+btn_sidebar.addEventListener('click', (event) => {
+    /**
+     * If shown, hide
+     */
+    if (isSidebarShown) {
+        sidebar.classList.remove('sidebar-show');
+        btn_sidebar.classList.remove('btn-active');
+        isSidebarShown = false;
+    }
+    /**
+     * if hidden, show
+     */
+    else {        
+        sidebar.classList.add('sidebar-show');
+        btn_sidebar.classList.add('btn-active');
+        isSidebarShown = true;
     }
 });
 
