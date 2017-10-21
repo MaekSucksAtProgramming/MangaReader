@@ -30,6 +30,11 @@ body {
     justify-content: space-between;
 }
 
+.topbar__right {
+    display: flex;
+    flex-direction: row;
+}
+
 .topbar__button {
     color: #fff;
     background-color: #000;
@@ -62,7 +67,7 @@ body {
     user-select: none;
     position: static;
     max-width: 100%;
-    max-height: 100%;
+    max-height: calc(100% - 2px);
     height: 100%;
     width: auto;
     border: 1px solid #7a7a7a;
