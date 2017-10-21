@@ -4,6 +4,7 @@
 const fs = require('fs');
 const ipc = require('electron').ipcRenderer
 const btn_openFiles = document.getElementById('openfiles');
+const naturalSort = require('./utils.js');
 
 btn_openFiles.addEventListener('click', function (event) {
     ipc.send('open-file-dialog')
@@ -19,7 +20,10 @@ ipc.on('opened-directory', (event, images) => {
     // When you click the lewd anime girl, you can select a folder
     // after selecting a folder the images will arrive here in the images variable
     // images = string[], a collection of image paths
-
+    imagesArray = images;
+    imagesArray.sort(naturalSort);
+    console.log(imagesArray);
+    image.src = imagesArray[0];
 });
 
 
