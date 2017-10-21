@@ -1,12 +1,14 @@
-const electron = require('electron')
-// Module to control application life.
-const app = electron.app
-// Module to create native browser window.
-const BrowserWindow = electron.BrowserWindow
+const {
+  app,
+  BrowserWindow
+} = require('electron');
 
 const path = require('path')
 const url = require('url')
-require('electron-reload')(__dirname);
+// require('electron-reload')(__dirname);
+require('electron-reload')(__dirname, {
+  electron: path.join(__dirname, 'node_modules', '.bin', 'electron')
+});
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -74,21 +76,15 @@ const fs = require('fs');
  */
 ipc.on('open-file-dialog', function (event) {
   dialog.showOpenDialog({
-    properties: ['openFile','showHiddenFiles']
-  }, function (files) {
-    // console.log(files);
-    // fs.readFile(files[0], 'utf-8', (error, data) => {
-    //   /**
-    //    * Checks to see if an error has occured, if so: reports it in console.
-    //    * @error: error or null, the if statement checks if(error) has a value, so not null
-    //    * If it has no value, its null, and turns to false, so the code behind it doesn't get run.
-    //    */
-    //   if (error) console.log('Error: ', error);
-
-    //   /**
-    //    * If a selection has been made (not null) forward to the function in renderer
-    //    */
-    //   if (data) event.sender.send('selected-directory', data);
-    // });
+    properties: ['openDirectory']
+  }, function (directory) {
+    var images = [];
+    fs.readdir(directory[0], (err, files) => {
+      files.forEach(file => {
+        const imagePath = path.join(directory[0], file);
+        images.push(imagePath);
+      });
+      if (images) event.sender.send('opened-directory', images);
+    })
   })
 })
