@@ -64,22 +64,20 @@ body {
     max-width: 100%;
     max-height: 100%;
     height: 100%;
-    width: auto;    
+    width: auto;
+    border: 1px solid #7a7a7a;
 }
 
 .btn {
     /* Sets the background colour of the div */
     background-color: rgb(221, 221, 221);
     opacity: 0.25;
-
     /* Flex attributes: https://flexbox.io/ */
     display: flex;
     align-items: center;
     justify-content: center;
-
     /* Inside content padding, remember box modol */
     padding: 1em;
-
     /* A CSS property that controls how fast
     it changes from 1 set of styling to the next
     used in our case by :hover, increase to make slower

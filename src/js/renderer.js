@@ -59,6 +59,24 @@ image.addEventListener('click', (event) => {
     }
 });
 
+/**
+ * Adds an event listener to the program that'll keep track of scroll
+ * If people scroll up, deltaY = -100, down deltaT = 100
+ * So we check the value and act accordingly
+ */
+image.addEventListener('wheel', (event) => {
+    event.preventDefault();
+    if(event.deltaY < 0) {
+        nextImage();
+    } else if ( event.deltaY > 0 ) {
+        previousImage();
+    }
+});
+
+// window.addEventListener('wheel', (event) => {
+//     console.log('test');
+// });
+
 
 /**
  * Has to a var to allow access beyond blockscope
