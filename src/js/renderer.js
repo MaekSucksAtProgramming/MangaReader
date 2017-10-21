@@ -9,7 +9,7 @@ const ipc = require('electron').ipcRenderer
 const selectDirBtn = document.getElementById('openfiles');
 
 selectDirBtn.addEventListener('click', function (event) {
-    ipc.send('open-file-dialog')
+    ipc.send('open-file`-dialog')
 })
 
 /**
@@ -43,7 +43,7 @@ let imagesArray = [
 
 const image = document.getElementById('image-viewer');
 const btn_left = document.getElementById('btn-left');
-const btn_right = document.getElementById('btn-right');
+const btn_right = document.getElementById('btn-right'); 
 
 btn_left.addEventListener('click', (event) => {
     previousImage()
@@ -66,9 +66,9 @@ image.addEventListener('click', (event) => {
  */
 image.addEventListener('wheel', (event) => {
     event.preventDefault();
-    if(event.deltaY < 0) {
+    if(event.deltaY < 0 && !event.shiftKey) {
         nextImage();
-    } else if ( event.deltaY > 0 ) {
+    } else if ( event.deltaY > 0 && !event.shiftKey) {
         previousImage();
     }
 });
@@ -76,6 +76,34 @@ image.addEventListener('wheel', (event) => {
 // window.addEventListener('wheel', (event) => {
 //     console.log('test');
 // });
+
+window.addEventListener('wheel', (event) => {
+    /**
+     * The event.shiftkey is a boolean, a true or false.
+     * the code inside will only be accepted if the browser detects that shift is held.
+     */
+    if (event.shiftKey && event.deltaY < 0) {      
+        zoomIn();
+    } else if (event.shiftKey && event.deltaY > 0) {
+        zoomOut();
+    }
+});
+var zoomRatio = 1.0;
+ 
+
+function zoomIn() {
+    if (zoomRatio <= 1.8)
+    zoomRatio = zoomRatio +0.2;
+    image.style.transform = `scale(${zoomRatio})`;    
+}
+
+function zoomOut() {
+    if (zoomRatio >= 0.4) {
+        zoomRatio = zoomRatio - 0.2;
+        image.style.transform = `scale(${zoomRatio})`; 
+    }
+      
+}
 
 
 /**

@@ -66,6 +66,8 @@ body {
     height: 100%;
     width: auto;
     border: 1px solid #7a7a7a;
+    transform-origin: top;
+    transition: 0.2s;
 }
 
 .btn {
