@@ -59,12 +59,11 @@ body {
 }
 
 .manga-container img {
-    /* TODO: Constrain the image to a certain size for consistency */
     user-select: none;
     position: static;
     max-width: 100%;
     max-height: 100%;
-    height: auto;
+    height: 100%;
     width: auto;    
 }
 

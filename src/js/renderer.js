@@ -43,6 +43,14 @@ btn_left.addEventListener('click', (event) => {
 btn_right.addEventListener('click', (event) => {
     nextImage()
 });
+image.addEventListener('click', (event) => {
+    if (imagesArray.length > 0) {
+        nextImage();
+    } else {
+        ipc.send('open-file-dialog');
+    }
+});
+
 
 /**
  * Has to a var to allow access beyond blockscope
