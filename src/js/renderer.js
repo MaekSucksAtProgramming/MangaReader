@@ -2,10 +2,7 @@
 // be executed in the renderer process for that window.
 // All of the Node.js APIs are available in this process.
 const fs = require('fs');
-
-
 const ipc = require('electron').ipcRenderer
-
 const selectDirBtn = document.getElementById('openfiles');
 
 selectDirBtn.addEventListener('click', function (event) {
@@ -17,14 +14,15 @@ selectDirBtn.addEventListener('click', function (event) {
  */
 ipc.on('selected-directory', function (event, files) {
     // TODO: Use the files paramter here to change the source images of the image array
-    // imagesArray =  files;
 });
-
 
 
 /////////////////////////////////////////////
 
-// let imagesArray = []
+/**
+ * Replace below imagesArray[] with an empty array once we got image loading going
+ */
+// let imagesArray = [] 
 let imagesArray = [
     '../assets/images/1.jpg',
     '../assets/images/2.jpg',
@@ -46,10 +44,10 @@ const btn_left = document.getElementById('btn-left');
 const btn_right = document.getElementById('btn-right');
 
 btn_left.addEventListener('click', (event) => {
-    previousImage()
+    previousImage();
 });
 btn_right.addEventListener('click', (event) => {
-    nextImage()
+    nextImage();
 });
 image.addEventListener('click', (event) => {
     if (imagesArray.length > 0) {
