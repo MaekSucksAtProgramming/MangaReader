@@ -1,9 +1,9 @@
 let imagesArray = [
-    './assets/images/1.png',
-    './assets/images/2.png',
-    './assets/images/3.png',
-    './assets/images/4.jpg',
-    './assets/images/5.jpg'
+    '../assets/images/1.png',
+    '../assets/images/2.png',
+    '../assets/images/3.png',
+    '../assets/images/4.jpg',
+    '../assets/images/5.jpg'
 ]
 
 const image = document.getElementById('image-viewer');

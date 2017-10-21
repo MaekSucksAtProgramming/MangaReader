@@ -21,7 +21,7 @@ function createWindow() {
 
   // and load the index.html of the app.
   mainWindow.loadURL(url.format({
-    pathname: path.join(__dirname, 'index.html'),
+    pathname: path.join(__dirname, '../views/index.html'),
     protocol: 'file:',
     slashes: true
   }))
@@ -83,7 +83,7 @@ ipc.on('open-file-dialog', function (event) {
        * If a selection has been made, this data variable contains an array pf image links
        * (similar to the images array)
        */
-      // console.log(data);
+      console.log(data);
 
       /**
        * If a selection has been made (not null) forward to the function in renderer

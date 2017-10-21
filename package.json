@@ -2,7 +2,7 @@
   "name": "manga-reader",
   "version": "0.0.1",
   "description": "Weebs",
-  "main": "./src/main.js",
+  "main": "./src/js/main.js",
   "scripts": {
     "start": "electron ."
   },
