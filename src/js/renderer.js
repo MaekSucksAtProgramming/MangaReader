@@ -43,7 +43,20 @@ const image = document.getElementById('image-viewer');
 const btn_left = document.getElementById('btn-left');
 const btn_right = document.getElementById('btn-right');
 const btn_sidebar = document.getElementById('btn-sidebar-toggle');
+const btn_zoomIn = document.getElementById('zoom_in');
+const btn_zoomOut = document.getElementById('zoom_out');
 const sidebar = document.getElementById('sidebar');
+
+var zoomRatio = 1.0;
+btn_zoomIn.addEventListener('click', (event) => {
+    zoomRatio += 0.1;
+    image.style.transform = `scale(${zoomRatio})`;
+    image.style.transformOrigin = '${zoomRatio * 10}%';
+});
+btn_zoomOut.addEventListener('click', (event) => {
+    zoomRatio -= 0.1;
+    image.style.transform = `scale(${zoomRatio})`;
+});
 
 btn_left.addEventListener('click', (event) => {
     previousImage();
