@@ -47,16 +47,34 @@ const btn_zoomIn = document.getElementById('zoom_in');
 const btn_zoomOut = document.getElementById('zoom_out');
 const sidebar = document.getElementById('sidebar');
 
+/**
+ * Keep tracks of the zoomRatio
+ */
 var zoomRatio = 1.0;
 btn_zoomIn.addEventListener('click', (event) => {
-    zoomRatio += 0.1;
-    image.style.transform = `scale(${zoomRatio})`;
-    image.style.transformOrigin = '${zoomRatio * 10}%';
+    zoomIn();
 });
 btn_zoomOut.addEventListener('click', (event) => {
-    zoomRatio -= 0.1;
-    image.style.transform = `scale(${zoomRatio})`;
+    zoomOut();
 });
+
+/**
+ * Uses on shift + scroll and zoom button click, scales the image up
+ */
+const zoomIn = (ratio = zoomRatio) => {
+    if (ratio <= 1.8) zoomRatio = zoomRatio + 0.2;
+    image.style.transform = `scale(${zoomRatio})`;
+}
+
+/**
+ * Uses on shift + scroll and zoom button click, scales the image down
+ */
+const zoomOut = (ratio = zoomRatio) => {
+    if (ratio >= 0.4) zoomRatio = zoomRatio - 0.2;
+    image.style.transform = `scale(${zoomRatio})`;
+}
+
+
 
 btn_left.addEventListener('click', (event) => {
     previousImage();
@@ -84,7 +102,7 @@ btn_sidebar.addEventListener('click', (event) => {
     /**
      * if hidden, show
      */
-    else {        
+    else {
         sidebar.classList.add('sidebar-show');
         btn_sidebar.classList.add('btn-active');
         isSidebarShown = true;
