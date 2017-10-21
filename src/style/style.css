@@ -30,6 +30,11 @@ body {
     justify-content: space-between;
 }
 
+.topbar__right {
+    display: flex;
+    flex-direction: row;
+}
+
 .topbar__button {
     color: #fff;
     background-color: #000;

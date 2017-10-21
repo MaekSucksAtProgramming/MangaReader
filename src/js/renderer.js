@@ -66,16 +66,22 @@ image.addEventListener('click', (event) => {
  */
 image.addEventListener('wheel', (event) => {
     event.preventDefault();
-    if(event.deltaY < 0) {
+    if (event.deltaY < 0) {
         nextImage();
-    } else if ( event.deltaY > 0 ) {
+    } else if (event.deltaY > 0) {
         previousImage();
     }
 });
 
-// window.addEventListener('wheel', (event) => {
-//     console.log('test');
-// });
+window.addEventListener('wheel', (event) => {
+    /**
+     * The event.shiftkey is a boolean, a true or false.
+     * the code inside will only be accepted if the browser detects that shift is held.
+     */
+    if (event.shiftKey) {
+
+    }
+});
 
 
 /**
