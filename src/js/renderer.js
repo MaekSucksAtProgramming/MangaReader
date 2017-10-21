@@ -6,7 +6,7 @@ const ipc = require('electron').ipcRenderer
 const selectDirBtn = document.getElementById('openfiles');
 
 selectDirBtn.addEventListener('click', function (event) {
-    ipc.send('open-file-dialog')
+    ipc.send('open-file`-dialog')
 })
 
 /**
@@ -47,34 +47,12 @@ const btn_zoomIn = document.getElementById('zoom_in');
 const btn_zoomOut = document.getElementById('zoom_out');
 const sidebar = document.getElementById('sidebar');
 
-/**
- * Keep tracks of the zoomRatio
- */
-var zoomRatio = 1.0;
 btn_zoomIn.addEventListener('click', (event) => {
     zoomIn();
 });
 btn_zoomOut.addEventListener('click', (event) => {
     zoomOut();
 });
-
-/**
- * Uses on shift + scroll and zoom button click, scales the image up
- */
-const zoomIn = (ratio = zoomRatio) => {
-    if (ratio <= 1.8) zoomRatio = zoomRatio + 0.2;
-    image.style.transform = `scale(${zoomRatio})`;
-}
-
-/**
- * Uses on shift + scroll and zoom button click, scales the image down
- */
-const zoomOut = (ratio = zoomRatio) => {
-    if (ratio >= 0.4) zoomRatio = zoomRatio - 0.2;
-    image.style.transform = `scale(${zoomRatio})`;
-}
-
-
 
 btn_left.addEventListener('click', (event) => {
     previousImage();
@@ -116,22 +94,39 @@ btn_sidebar.addEventListener('click', (event) => {
  */
 image.addEventListener('wheel', (event) => {
     event.preventDefault();
-    if (event.deltaY < 0) {
+    if (event.deltaY < 0 && !event.shiftKey) {
         nextImage();
-    } else if (event.deltaY > 0) {
+    } else if (event.deltaY > 0 && !event.shiftKey) {
         previousImage();
     }
 });
 
+/**
+ * The event.shiftkey is a boolean, a true or false.
+ * the code inside will only be accepted if the browser detects that shift is held.
+ */
 window.addEventListener('wheel', (event) => {
-    /**
-     * The event.shiftkey is a boolean, a true or false.
-     * the code inside will only be accepted if the browser detects that shift is held.
-     */
-    if (event.shiftKey) {
-
+    if (event.shiftKey && event.deltaY < 0) {
+        zoomIn();
+    } else if (event.shiftKey && event.deltaY > 0) {
+        zoomOut();
     }
 });
+var zoomRatio = 1.0;
+
+
+function zoomIn() {
+    if (zoomRatio <= 1.8)
+        zoomRatio = zoomRatio + 0.2;
+    image.style.transform = `scale(${zoomRatio})`;
+}
+
+function zoomOut() {
+    if (zoomRatio >= 0.4) {
+        zoomRatio = zoomRatio - 0.2;
+        image.style.transform = `scale(${zoomRatio})`;
+    }
+}
 
 
 /**
