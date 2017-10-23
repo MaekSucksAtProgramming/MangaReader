@@ -22,7 +22,8 @@
     "electron-reload": "^1.2.2"
   },
   "dependencies": {
-    "font-awesome": "^4.7.0"
+    "font-awesome": "^4.7.0",
+    "tesseract.js": "^1.0.10"
   },
   "build": {
     "appId": "s-and-f.weebs"

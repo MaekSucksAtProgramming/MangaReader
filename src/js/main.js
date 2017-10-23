@@ -83,6 +83,7 @@ ipc.on('open-file-dialog', function (event) {
       fs.readdir(directory[0], (err, files) => {
         files.forEach(file => {
           const imagePath = path.join(directory[0], file);
+
           images.push(imagePath);
         });
         if (images) event.sender.send('opened-directory', images);
@@ -91,4 +92,15 @@ ipc.on('open-file-dialog', function (event) {
       console.log(error);
     }
   })
+})
+
+/// OCR
+
+
+ipc.on('perform-ocr', function (event, ...agrs) {
+  const image = agrs[0];
+  Tesseract.recognize(image)
+    .then(function (result) {
+      console.log(result)
+    })
 })

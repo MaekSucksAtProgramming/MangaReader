@@ -6,6 +6,7 @@
     <title>Manga Reader</title>
     <link rel="stylesheet" href="../style/style.css">
     <link rel="stylesheet" href="../../node_modules/font-awesome/css/font-awesome.min.css">
+    <script src='https://cdn.rawgit.com/naptha/tesseract.js/1.0.10/dist/tesseract.js'></script>
 </head>
 
 <body>
@@ -17,6 +18,9 @@
                 </div>
             </div>
             <div class="topbar__right">
+                <div class="topbar__button" id="ocr">
+                    <i class="fa fa-book" aria-hidden="true"></i>
+                </div>
                 <div class="topbar__button" id="zoom_out">
                     <i class="fa fa-search-minus" aria-hidden="true"></i>
                 </div>
@@ -37,7 +41,8 @@
                     <i class="fa fa-arrow-left" aria-hidden="true"></i>
                 </div>
                 <div id="image">
-                    <img src="" id="image-viewer">
+                    <!-- <img src="" id="image-viewer"> -->
+                    <canvas id="canvas-viewer"></canvas>
                 </div>
                 <div class="btn btn-right" id="btn-right">
                     <i class="fa fa-arrow-right" aria-hidden="true"></i>

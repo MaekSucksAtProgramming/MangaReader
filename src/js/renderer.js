@@ -6,6 +6,11 @@ const ipc = require('electron').ipcRenderer
 const naturalSort = require('./utils.js');
 
 
+window.Tesseract = Tesseract.create({
+    langPath: 'https://cdn.rawgit.com/naptha/tessdata/gh-pages/3.02/',
+    corePath: 'https://cdn.rawgit.com/naptha/tesseract.js-core/0.1.0/index.js',
+})
+
 
 /**
  * This line holds the folder selected
@@ -33,6 +38,7 @@ const btn_right = document.getElementById('btn-right');
 const btn_sidebar = document.getElementById('btn-sidebar-toggle');
 const btn_zoomIn = document.getElementById('zoom_in');
 const btn_zoomOut = document.getElementById('zoom_out');
+const btn_ocr = document.getElementById('ocr');
 const sidebar = document.getElementById('sidebar');
 
 /* Set placeholder */
@@ -44,6 +50,14 @@ if (imagesArray.length === 0) {
 /* Event listeners*/
 btn_openFiles.addEventListener('click', (event) => {
     ipc.send('open-file-dialog')
+})
+btn_ocr.addEventListener('click', (event) => {
+    // ipc.send('perform-ocr', imagesArray[imageIndex])
+    // temp
+    Tesseract.recognize(image, 'jpn')
+        .then(function (result) {
+            console.log('result', result)
+        })
 })
 
 btn_zoomIn.addEventListener('click', (event) => {
@@ -143,4 +157,3 @@ function nextImage() {
         image.src = imagesArray[imageIndex];
     }
 }
-
