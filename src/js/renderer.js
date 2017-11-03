@@ -40,6 +40,7 @@ const btn_zoomIn = document.getElementById('zoom_in');
 const btn_zoomOut = document.getElementById('zoom_out');
 const btn_ocr = document.getElementById('ocr');
 const sidebar = document.getElementById('sidebar');
+const counter = document.getElementById('page-counter');
 
 /* Set placeholder */
 if (imagesArray.length === 0) {
@@ -156,4 +157,16 @@ function nextImage() {
         imageIndex = imageIndex + 1;
         image.src = imagesArray[imageIndex];
     }
+<<<<<<< HEAD
 }
+=======
+}
+
+function countPage() {
+    if (imageIndex < 0) {
+        counter.classList.remove('.page-counter')
+    } else {
+        counter.innerHTML = `<p>${imageIndex}/${imagesArray.length}</p>`;
+    }
+}
+>>>>>>> fb75d174128b47895f58850bd25ddce9d738ad17
