@@ -34,6 +34,7 @@ const btn_sidebar = document.getElementById('btn-sidebar-toggle');
 const btn_zoomIn = document.getElementById('zoom_in');
 const btn_zoomOut = document.getElementById('zoom_out');
 const sidebar = document.getElementById('sidebar');
+const counter = document.getElementById('page-counter');
 
 /* Set placeholder */
 if (imagesArray.length === 0) {
@@ -144,3 +145,10 @@ function nextImage() {
     }
 }
 
+function countPage() {
+    if (imageIndex < 0) {
+        counter.classList.remove('.page-counter')
+    } else {
+        counter.innerHTML = `<p>${imageIndex}/${imagesArray.length}</p>`;
+    }
+}
