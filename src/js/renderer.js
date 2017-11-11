@@ -21,6 +21,8 @@ ipc.on('opened-directory', (event, images) => {
     imagesArray.sort(naturalSort);
     console.log(imagesArray);
     image.src = imagesArray[0];
+
+    countPage();
 });
 
 
@@ -53,12 +55,7 @@ btn_openFiles.addEventListener('click', (event) => {
     ipc.send('open-file-dialog')
 })
 btn_ocr.addEventListener('click', (event) => {
-    // ipc.send('perform-ocr', imagesArray[imageIndex])
-    // temp
-    Tesseract.recognize(image, 'jpn')
-        .then(function (result) {
-            console.log('result', result)
-        })
+
 })
 
 btn_zoomIn.addEventListener('click', (event) => {
@@ -150,6 +147,7 @@ function previousImage() {
         imageIndex = imageIndex - 1;
         image.src = imagesArray[imageIndex];
     }
+    countPage();
 }
 
 function nextImage() {
@@ -157,16 +155,13 @@ function nextImage() {
         imageIndex = imageIndex + 1;
         image.src = imagesArray[imageIndex];
     }
-<<<<<<< HEAD
-}
-=======
+    countPage();
 }
 
+
+counter.style.display = 'none';
+
 function countPage() {
-    if (imageIndex < 0) {
-        counter.classList.remove('.page-counter')
-    } else {
-        counter.innerHTML = `<p>${imageIndex}/${imagesArray.length}</p>`;
-    }
+    counter.style.display = 'unset';
+    counter.innerHTML = `<p>${imageIndex + 1}/${imagesArray.length - 1}</p>`;
 }
->>>>>>> fb75d174128b47895f58850bd25ddce9d738ad17
